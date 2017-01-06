@@ -8,19 +8,19 @@ using Riders.Common.Model;
 
 namespace Riders.BL
 {
-    public class DataGenerator
+    public static class DataGenerator
     {
         private const int ObjectsToGenerate = 5;
-        private Random r = new Random();
+        private static readonly Random r = new Random();
 
-        public void GenerateData()
+        public static void GenerateData()
         {
             var horses = GenerateHorses();
             var riders = GenerateRiders(horses);
-            GenerateRaces(riders);
+            var races = GenerateRaces(riders);
         }
 
-        private IEnumerable<Race> GenerateRaces(IEnumerable<Rider> riders)
+        private static IEnumerable<Race> GenerateRaces(IEnumerable<Rider> riders)
         {
             var ridersList = riders.ToList();
             for (var i = 0; i < ObjectsToGenerate; i++)
@@ -29,7 +29,7 @@ namespace Riders.BL
             }
         }
 
-        private Race GenerateRace(List<Rider> ridersList)
+        private static Race GenerateRace(List<Rider> ridersList)
         {
             var ridersShuffled = ridersList.OrderBy(rider => r.Next());
             var race = new Race()
@@ -38,13 +38,13 @@ namespace Riders.BL
                 Rider2 = ridersShuffled.Skip(1).First()
             };
 
-            return DataContext.Current.Races.SaveOrUpdate(race);
+            return DataContextManager.Current.Races.SaveOrUpdate(race);
         }
 
-        private readonly List<string> riderFirstNames = new List<string> { "Hillary", "Bernie", "Ted", "Donald", "Vermin" };
-        private readonly List<string> riderLastNames = new List<string> { "Clinton", "Sanders", "Cruz", "Trump", "Supreme" };
+        private static readonly List<string> riderFirstNames = new List<string> { "Hillary", "Bernie", "Ted", "Donald", "Vermin" };
+        private static readonly List<string> riderLastNames = new List<string> { "Clinton", "Sanders", "Cruz", "Trump", "Supreme" };
 
-        private IEnumerable<Rider> GenerateRiders(IEnumerable<Horse> horses)
+        private static IEnumerable<Rider> GenerateRiders(IEnumerable<Horse> horses)
         {
             var horsesList = horses.ToList();
             for (var i = 0; i < ObjectsToGenerate; i++)
@@ -53,7 +53,7 @@ namespace Riders.BL
             }
         }
 
-        private Rider GenerateRider(IList<Horse> horses)
+        private static Rider GenerateRider(IList<Horse> horses)
         {
             var rider = new Rider()
             {
@@ -63,13 +63,13 @@ namespace Riders.BL
                 Name = GenerateName(riderFirstNames, riderLastNames),
                 Horse = horses[r.Next(horses.Count)]
             };
-            return DataContext.Current.Riders.SaveOrUpdate(rider);
+            return DataContextManager.Current.Riders.SaveOrUpdate(rider);
         }
 
-        private readonly List<string> horseFirstNames = new List<string> { "Binky", "Horsy", "Soos", "Mister", "Rapidash" };
-        private readonly List<string> horseLastNames = new List<string> { "McHorseFace", "The Kid", "Thunder-Hoof", "De Lombard", "Snake Eyes" };
+        private static readonly List<string> horseFirstNames = new List<string> { "Binky", "Horsy", "Soos", "Mister", "Rapidash" };
+        private static readonly List<string> horseLastNames = new List<string> { "McHorseFace", "The Kid", "Thunder-Hoof", "De Lombard", "Snake Eyes" };
 
-        private IEnumerable<Horse> GenerateHorses()
+        private static IEnumerable<Horse> GenerateHorses()
         {
             for (var i = 0; i < ObjectsToGenerate; i++)
             {
@@ -77,7 +77,7 @@ namespace Riders.BL
             }
         }
 
-        private Horse GenerateHorse()
+        private static Horse GenerateHorse()
         {
             var horse = new Horse()
             {
@@ -86,10 +86,10 @@ namespace Riders.BL
                 Timidness = r.Next(100),
                 Name = GenerateName(horseFirstNames, horseLastNames)
             };
-            return DataContext.Current.Horses.SaveOrUpdate(horse);
+            return DataContextManager.Current.Horses.SaveOrUpdate(horse);
         }
 
-        private string GenerateName(List<string> firstNames, List<string> lastNames)
+        private static string GenerateName(List<string> firstNames, List<string> lastNames)
         {
             var firstName = firstNames[r.Next(firstNames.Count)];
             var lastName = lastNames[r.Next(lastNames.Count)];

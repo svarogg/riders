@@ -14,7 +14,7 @@ namespace Riders.BL
     {
         public static IList<Race> GetRaces()
         {
-            return DataContext.Current.Races.Queryable.ToList();
+            return DataContextManager.Current.Races.Queryable.ToList();
         }
 
         public static void PlaceBet(Race race, Rider rider, string bidderName, decimal amount)
@@ -24,20 +24,20 @@ namespace Riders.BL
                 Race = race,
                 Rider = rider
             };
-            DataContext.Current.Bets.SaveOrUpdate(bet);
+            DataContextManager.Current.Bets.SaveOrUpdate(bet);
         }
 
         public static RaceResults CommenceRaces()
         {
             var results = new RaceResults();
 
-            foreach (var race in DataContext.Current.Races.Queryable)
+            foreach (var race in DataContextManager.Current.Races.Queryable)
             {
                 var winner = race.GetWinner();
                 results.RaceWinners.Add(race, winner);
 
                 var winningBids =
-                    DataContext.Current.Bets.Queryable.Where(bet => bet.Race == race && bet.Rider == winner);
+                    DataContextManager.Current.Bets.Queryable.Where(bet => bet.Race == race && bet.Rider == winner);
 
                 var oddsMultiplier = GetOddsMultiplier(race, winner);
 
