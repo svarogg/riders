@@ -48,7 +48,7 @@
     <Compile Include="RaceResults.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Riders.Model\Riders.Common.csproj">
+    <ProjectReference Include="..\Riders.Common\Riders.Common.csproj">
       <Project>{6b616a9b-7caa-474e-8f00-717e78e02543}</Project>
       <Name>Riders.Common</Name>
     </ProjectReference>

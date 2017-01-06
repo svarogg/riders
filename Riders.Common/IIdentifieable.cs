@@ -2,6 +2,6 @@
 {
     public interface IIdentifieable
     {
-        long? Id { get; }
+        long? Id { get; set; }
     }
 }
