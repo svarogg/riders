@@ -10,6 +10,6 @@ namespace Riders.BL
     public class RaceResults
     {
         public Dictionary<Race, Rider> RaceWinners { get; private set; } = new Dictionary<Race, Rider>();
-        public Dictionary<string, decimal> BiddersPrizes { get; private set; } = new Dictionary<string, decimal>();
+        public Dictionary<string, decimal> Prizes { get; private set; } = new Dictionary<string, decimal>();
     }
 }

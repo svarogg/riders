@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riders.BL", "Riders.BL\Ride
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riders.DL.Json", "Riders.DL.Json\Riders.DL.Json.csproj", "{5449CD3E-48ED-4A75-9165-59ECD867C89F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riders.PL.Cli", "Riders.PL.Cli\Riders.PL.Cli.csproj", "{A2B2608C-2BF0-49CA-93F6-74A8F0C79F00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{5449CD3E-48ED-4A75-9165-59ECD867C89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5449CD3E-48ED-4A75-9165-59ECD867C89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5449CD3E-48ED-4A75-9165-59ECD867C89F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2B2608C-2BF0-49CA-93F6-74A8F0C79F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2B2608C-2BF0-49CA-93F6-74A8F0C79F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2B2608C-2BF0-49CA-93F6-74A8F0C79F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2B2608C-2BF0-49CA-93F6-74A8F0C79F00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6126648D-95F6-441D-A85F-1880EDA55D44}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{A2B2608C-2BF0-49CA-93F6-74A8F0C79F00}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Riders.BL</RootNamespace>
-    <AssemblyName>Riders.BL</AssemblyName>
+    <RootNamespace>Riders.PL.Cli</RootNamespace>
+    <AssemblyName>Riders.PL.Cli</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,22 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bookie.cs" />
-    <Compile Include="DataContextManager.cs" />
-    <Compile Include="DataGenerator.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ExtensionMethods\RaceExtensions.cs" />
-    <Compile Include="ExtensionMethods\RiderExtensions.cs" />
-    <Compile Include="RaceResults.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Riders.BL\Riders.BL.csproj">
+      <Project>{6126648d-95f6-441d-a85f-1880eda55d44}</Project>
+      <Name>Riders.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Riders.Common\Riders.Common.csproj">
       <Project>{6b616a9b-7caa-474e-8f00-717e78e02543}</Project>
       <Name>Riders.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Riders.DL.Json\Riders.DL.Json.csproj">
-      <Project>{5449CD3E-48ED-4A75-9165-59ECD867C89F}</Project>
-      <Name>Riders.DL.Json</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

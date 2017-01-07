@@ -22,7 +22,7 @@ namespace Riders.DL.Json.DataProviders
 
             return new Bet()
             {
-                Amount = json.Amount,
+                Amount = (decimal)json.Amount,
                 BidderName = json.BidderName,
                 RaceId = raceId,
                 Race = Context.Races.Queryable.First(race => race.Id == raceId),
@@ -37,8 +37,8 @@ namespace Riders.DL.Json.DataProviders
 
             json.Amount = bet.Amount;
             json.BidderName = bet.BidderName;
-            json.RaceId = bet.RaceId;
-            json.RiderId = bet.RiderId;
+            json.RaceId = bet.Race?.Id ?? bet.RaceId;
+            json.RiderId = bet.Rider?.Id ?? bet.RiderId;
 
             return json;
         }

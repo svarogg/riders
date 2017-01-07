@@ -17,14 +17,14 @@ namespace Riders.DL.Json.DataProviders
 
         protected override Rider FromJson(dynamic json)
         {
-            long horseId = json.horseId;
+            long horseId = json.HorseId;
 
             return new Rider()
             {
                 Name = json.Name,
-                Control = json.Control,
-                Fitness = json.Fitness,
-                Weight = json.Weight,
+                Control = (int)json.Control,
+                Fitness = (int)json.Fitness,
+                Weight = (int)json.Weight,
                 HorseId = horseId,
                 Horse = Context.Horses.Queryable.First(horse => horse.Id == horseId)
             };
@@ -38,7 +38,7 @@ namespace Riders.DL.Json.DataProviders
             json.Control = rider.Control;
             json.Fitness = rider.Fitness;
             json.Weight = rider.Weight;
-            json.HorseId = rider.HorseId;
+            json.HorseId = rider.Horse?.Id ?? rider.HorseId;
 
             return json;
         }

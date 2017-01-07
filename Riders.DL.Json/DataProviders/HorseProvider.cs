@@ -20,9 +20,9 @@ namespace Riders.DL.Json.DataProviders
             return new Horse()
             {
                 Name = json.Name,
-                Endurance = json.Endurance,
-                Speed = json.Speed,
-                Timidness = json.Timidness
+                Endurance = (int)json.Endurance,
+                Speed = (int)json.Speed,
+                Timidness = (int)json.Timidness
             };
         }
 

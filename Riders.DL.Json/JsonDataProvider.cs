@@ -25,6 +25,9 @@ namespace Riders.DL.Json
         {
             Context = dataContext;
             StoreDirectory = new DirectoryInfo(Path.Combine(homeDirectory, typeof(T).Name.ToLower()));
+
+            if (!StoreDirectory.Exists)
+                StoreDirectory.Create();
         }
 
         public override IQueryable<T> Queryable => LoadObjects().AsQueryable();
@@ -43,7 +46,9 @@ namespace Riders.DL.Json
             using (var reader = new StreamReader(file.OpenRead()))
             {
                 dynamic json = JsonConvert.DeserializeObject<ExpandoObject>(reader.ReadToEnd(), jsonConverter);
-                return FromJson(json);
+                var obj = FromJson(json);
+                obj.Id = ExtractId(file);
+                return obj;
             }
         }
 
@@ -58,6 +63,7 @@ namespace Riders.DL.Json
             return StoreDirectory
                        .EnumerateFiles()
                        .Select(ExtractId)
+                       .DefaultIfEmpty(0)
                        .Max() + 1;
         }
 
@@ -65,7 +71,7 @@ namespace Riders.DL.Json
         {
             var match = Regex.Match(file.Name, @"(\d+)\.json");
             return match.Success
-                ? Int64.Parse(match.Groups[0].Value)
+                ? Int64.Parse(match.Groups[1].Value)
                 : 0;
 
         }
@@ -80,7 +86,8 @@ namespace Riders.DL.Json
             var targetFile = new FileInfo(Path.Combine(StoreDirectory.FullName, $"{obj.Id.Value}.json"));
             using (var writer = new StreamWriter(targetFile.OpenWrite()))
             {
-                writer.Write(JsonConvert.SerializeObject(obj, jsonConverter));
+                var json = ToJson(obj);
+                writer.Write(JsonConvert.SerializeObject(json, jsonConverter));
             }
             return obj;
         }

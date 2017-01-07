@@ -22,7 +22,9 @@ namespace Riders.BL
             var bet = new Bet
             {
                 Race = race,
-                Rider = rider
+                Rider = rider,
+                Amount = amount,
+                BidderName = bidderName
             };
             DataContextManager.Current.Bets.SaveOrUpdate(bet);
         }
@@ -37,14 +39,16 @@ namespace Riders.BL
                 results.RaceWinners.Add(race, winner);
 
                 var winningBids =
-                    DataContextManager.Current.Bets.Queryable.Where(bet => bet.Race == race && bet.Rider == winner);
+                    DataContextManager.Current.Bets.Queryable.Where(bet => bet.RaceId == race.Id && bet.RiderId == winner.Id);
 
                 var oddsMultiplier = GetOddsMultiplier(race, winner);
 
                 foreach (var winningBid in winningBids)
                 {
-                    if (results.BiddersPrizes.ContainsKey(winningBid.BidderName))
-                        results.BiddersPrizes[winningBid.BidderName] += Math.Round(winningBid.Amount*(decimal) oddsMultiplier, 2);
+                    if (!results.Prizes.ContainsKey(winningBid.BidderName))
+                        results.Prizes[winningBid.BidderName] = 0;
+
+                    results.Prizes[winningBid.BidderName] += Math.Round(winningBid.Amount * (decimal)oddsMultiplier + winningBid.Amount, 2);
                 }
             }
 
@@ -59,7 +63,7 @@ namespace Riders.BL
                 : race.Rider1;
             var looserOdds = looser.GetAvarageScore();
 
-            return (double)winnerOdds / looserOdds;
+            return (double) looserOdds/winnerOdds;
         }
     }
 }

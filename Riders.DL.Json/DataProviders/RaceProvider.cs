@@ -33,8 +33,8 @@ namespace Riders.DL.Json.DataProviders
         {
             dynamic json = new ExpandoObject();
 
-            json.Rider1Id = race.Rider1Id;
-            json.Rider2Id = race.Rider2Id;
+            json.Rider1Id = race.Rider1?.Id ?? race.Rider1Id;
+            json.Rider2Id = race.Rider2?.Id ?? race.Rider2Id;
 
             return json;
         }
