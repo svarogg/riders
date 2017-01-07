@@ -23,9 +23,9 @@ namespace Riders.DL.Json.DataProviders
             return new Race
             {
                 Rider1Id = rider1Id,
-                Rider1 = Context.Riders.Queryable.First(rider => rider.Id == rider1Id),
+                Rider1 = Context.Riders.Query.First(rider => rider.Id == rider1Id),
                 Rider2Id = rider2Id,
-                Rider2 = Context.Riders.Queryable.First(rider => rider.Id == rider2Id)
+                Rider2 = Context.Riders.Query.First(rider => rider.Id == rider2Id)
             };
         }
 

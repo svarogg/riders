@@ -8,9 +8,9 @@
         public decimal Amount { get; set; }
 
         public long RaceId { get; set; }
-        public Race Race { get; set; }
+        public virtual Race Race { get; set; }
 
         public long RiderId { get; set; }
-        public Rider Rider { get; set; }
+        public virtual Rider Rider { get; set; }
     }
 }

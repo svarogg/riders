@@ -25,9 +25,9 @@ namespace Riders.DL.Json.DataProviders
                 Amount = (decimal)json.Amount,
                 BidderName = json.BidderName,
                 RaceId = raceId,
-                Race = Context.Races.Queryable.First(race => race.Id == raceId),
+                Race = Context.Races.Query.First(race => race.Id == raceId),
                 RiderId = riderId,
-                Rider = Context.Riders.Queryable.First(rider => rider.Id == riderId)
+                Rider = Context.Riders.Query.First(rider => rider.Id == riderId)
             };
         }
 

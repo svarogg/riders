@@ -30,7 +30,7 @@ namespace Riders.DL.Json
                 StoreDirectory.Create();
         }
 
-        public override IQueryable<T> Queryable => LoadObjects().AsQueryable();
+        public override IQueryable<T> Query => LoadObjects().AsQueryable();
 
         private IEnumerable<T> LoadObjects()
         {

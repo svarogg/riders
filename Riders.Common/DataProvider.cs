@@ -7,7 +7,7 @@ namespace Riders.Common
         /// <summary>
         /// Returns a Queryable object to query all objects in this data set.
         /// </summary>
-        public abstract IQueryable<T> Queryable { get; }
+        public abstract IQueryable<T> Query { get; }
 
         /// <summary>
         /// Saves or updates given object to the database

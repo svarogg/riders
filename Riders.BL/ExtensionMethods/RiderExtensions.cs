@@ -18,9 +18,9 @@ namespace Riders.BL.ExtensionMethods
 
         public static int GetRaceScore(this Rider rider)
         {
-            var luck = r.Next(100) - 50;
+            var luck = r.NextDouble();
 
-            return rider.GetAvarageScore() + luck;
+            return (int)(rider.GetAvarageScore() * luck);
         }
     }
 }

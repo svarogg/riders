@@ -26,7 +26,7 @@ namespace Riders.DL.Json.DataProviders
                 Fitness = (int)json.Fitness,
                 Weight = (int)json.Weight,
                 HorseId = horseId,
-                Horse = Context.Horses.Queryable.First(horse => horse.Id == horseId)
+                Horse = Context.Horses.Query.First(horse => horse.Id == horseId)
             };
         }
 
