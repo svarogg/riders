@@ -90,7 +90,7 @@ namespace Riders.BL
             {
                 Endurance = r.Next(100),
                 Speed = r.Next(100),
-                Timidness = r.Next(100),
+                Health = r.Next(100),
                 Name = GenerateName(horseFirstNames, horseLastNames)
             };
             return DataContextManager.Current.Horses.SaveOrUpdate(horse);

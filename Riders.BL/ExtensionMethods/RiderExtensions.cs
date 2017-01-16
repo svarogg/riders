@@ -11,7 +11,7 @@ namespace Riders.BL.ExtensionMethods
         {
             var riderScore = rider.Control + rider.Fitness + (99 - rider.Weight);
             var horse = rider.Horse;
-            var horseScore = horse.Endurance + horse.Speed + horse.Timidness;
+            var horseScore = horse.Endurance + horse.Speed + horse.Health;
 
             return riderScore + horseScore;
         }

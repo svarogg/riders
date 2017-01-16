@@ -8,6 +8,6 @@
 
         public int Speed { get; set; }
         public int Endurance { get; set; }
-        public int Timidness { get; set; }
+        public int Health { get; set; }
     }
 }

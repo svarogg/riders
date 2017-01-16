@@ -22,7 +22,7 @@ namespace Riders.DL.Json.DataProviders
                 Name = json.Name,
                 Endurance = (int)json.Endurance,
                 Speed = (int)json.Speed,
-                Timidness = (int)json.Timidness
+                Health = (int)json.Timidness
             };
         }
 
@@ -33,7 +33,7 @@ namespace Riders.DL.Json.DataProviders
             json.Name = horse.Name;
             json.Endurance = horse.Endurance;
             json.Speed = horse.Speed;
-            json.Timidness = horse.Timidness;
+            json.Timidness = horse.Health;
 
             return json;
         }

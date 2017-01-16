@@ -142,7 +142,7 @@ namespace Riders.PL.Cli
             Console.WriteLine($"Riding: {horse.Name}");
             Console.WriteLine($"\tSpeed: {horse.Speed} ");
             Console.WriteLine($"\tEndurance: {horse.Endurance} ");
-            Console.WriteLine($"\tTimidness: {horse.Timidness} ");
+            Console.WriteLine($"\tTimidness: {horse.Health} ");
 
             Console.WriteLine();
             Console.WriteLine($"Total Score: {rider.GetAvarageScore()}");
