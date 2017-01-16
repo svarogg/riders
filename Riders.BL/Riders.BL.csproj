@@ -53,14 +53,6 @@
       <Project>{6b616a9b-7caa-474e-8f00-717e78e02543}</Project>
       <Name>Riders.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Riders.DL.EF\Riders.DL.EF.csproj">
-      <Project>{9CCA6226-CC99-42A2-A176-339B7A3B9977}</Project>
-      <Name>Riders.DL.EF</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Riders.DL.Json\Riders.DL.Json.csproj">
-      <Project>{5449CD3E-48ED-4A75-9165-59ECD867C89F}</Project>
-      <Name>Riders.DL.Json</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
